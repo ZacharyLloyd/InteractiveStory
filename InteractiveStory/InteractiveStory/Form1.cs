@@ -18,6 +18,8 @@ namespace InteractiveStory
         string name;
         //Variable is used to keep track of health and used in losehealth method
         int health = 100;
+        //List of strings for items that will be in the inventory
+        List<string> inventory = new List<String> ();
         public Form1()
         {
             InitializeComponent();
@@ -64,6 +66,16 @@ namespace InteractiveStory
             
             //Tell the player they have arrived at the store
             MessageBox.Show("You have arrived at the store. Use the options drop down to continue");
+            //Add items to inventory for reaching the store
+            inventory.Add("Canned Beef");
+            inventory.Add("Rubbing Alcohol");
+            inventory.Add("Tylenol");
+            inventory.Add("Canned Peas");
+            inventory.Add("First Aid Kit");
+            //Let the player know items have been added to their inventory
+            MessageBox.Show("You have items that have been added to your inventory");
+            //Set the button to now be interactable now that their are items in the inventory
+            DisplayInventory.Enabled = true;
             //Change the background image to match to the store located in the resource folder
             this.BackgroundImage = Properties.Resources.Store;
             //Return the name of the player
@@ -144,6 +156,16 @@ namespace InteractiveStory
             }
             //Call the LoseHealth method to let the player know they have died
             LoseHealth(health);
+        }
+        //Display the items the player has in the inventory when the button is clicked
+        private void DisplayInventory_Click(object sender, EventArgs e)
+        {
+            //Cycle through the list<> inventory to display items in the list
+            foreach(string item in inventory)
+            {
+                //Print out the items that are in the list
+                StoryTextBox.Text = StoryTextBox.Text + "\n This item has been found in your inventory : " + item + ".";
+            }
         }
     }
 }
