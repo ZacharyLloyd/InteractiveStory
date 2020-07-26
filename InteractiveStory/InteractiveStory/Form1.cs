@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace InteractiveStory
 {
@@ -20,9 +21,19 @@ namespace InteractiveStory
         int health = 100;
         //List of strings for items that will be in the inventory
         List<string> inventory = new List<String> ();
+        //Create an object for playing intro sounds
+        SoundPlayer introSoundPlayer = new SoundPlayer(Properties.Resources.Killer_Movie_Scene_Sound);
+        //Create an object for playing inventory add noises
+        SoundPlayer inventoryOpenSoundPlayer = new SoundPlayer(Properties.Resources.leather_inventory);
+        //Create an object for playing inventory closes noise
+        SoundPlayer inventoryCloseSoundPlayer = new SoundPlayer(Properties.Resources.cloth_inventory);
+        //Create an object for playing zombie sounds
+        SoundPlayer zombieSoundPlayer = new SoundPlayer(Properties.Resources.Enraged_Zombies);
         public Form1()
         {
             InitializeComponent();
+            //Play intro sound
+            introSoundPlayer.Play();
         }
         //Method is used to take in the players name and start the story
         private void EnterInput_Click(object sender, EventArgs e)
@@ -31,6 +42,7 @@ namespace InteractiveStory
             name = InputTextBox.Text;
             //Start story
             StartStory(name);
+            
         }
         //This method is used for the combo box to allow the player to make a decision
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -39,6 +51,8 @@ namespace InteractiveStory
             newChoice = comboBox1.SelectedIndex;
             //This calls the Decision method
             Decision();
+            //Stop playing intro sound
+            introSoundPlayer.Stop();
         }
         //This method is used to take away the players health. It returns the health at the end of the method and passes in health as a parameter
         private int LoseHealth(int loseHealth)
@@ -66,6 +80,8 @@ namespace InteractiveStory
             
             //Tell the player they have arrived at the store
             MessageBox.Show("You have arrived at the store. Use the options drop down to continue");
+            //Play inventory open sound
+            inventoryOpenSoundPlayer.Play();
             //Add items to inventory for reaching the store
             inventory.Add("Canned Beef");
             inventory.Add("Rubbing Alcohol");
@@ -74,6 +90,8 @@ namespace InteractiveStory
             inventory.Add("First Aid Kit");
             //Let the player know items have been added to their inventory
             MessageBox.Show("You have items that have been added to your inventory");
+            //Play inventory close sound
+            inventoryCloseSoundPlayer.Play();
             //Set the button to now be interactable now that their are items in the inventory
             DisplayInventory.Enabled = true;
             //Change the background image to match to the store located in the resource folder
@@ -117,7 +135,8 @@ namespace InteractiveStory
                 case 1:
                     //Display story
                     StoryTextBox.Text = "You have decided to fight the horde. You all take apportiate positions to fend off the horde. You are able to fend them off for a short time but all of you run out of bullets. There is nothing left for you guys to do except to accept fate.";
-                    
+                    //Play zombie sound
+                    zombieSoundPlayer.Play();
                     //Commented out to make it all appear at once
                     //StoryTextBox.Text = "You all take apportiate positions to fend off the horde.";
                     //StoryTextBox.Text = "You are able to fend them off for a short time but all of you run out of bullets.";
@@ -130,7 +149,8 @@ namespace InteractiveStory
                 case 2:
                     //Display Story
                     StoryTextBox.Text = "You have decided to run from the horde. You make it down the street and think all of you are getting away. You turn a street corner and realize you are surrounded though and have no where to go. You try fighting at this point but are overwhelmed.";
-
+                    //Play zombie sound
+                    zombieSoundPlayer.Play();
                     //Commented out to make it all appear at once
                     //StoryTextBox.Text = "You make it down the street and think all of you are getting away.";
                     //StoryTextBox.Text = "You turn a street corner and realize you are surrounded though and have no where to go.";
@@ -143,7 +163,8 @@ namespace InteractiveStory
                 case 3:
                     //Display story
                     StoryTextBox.Text = "You have decided to hide from the horde. All of you find a good spot in a warehouse to hide for the time being. Something in the warehouse makes a loud crashing noise though and alerts the horde. You are now trapped in a warehouse with the horde closing in. You all try to fight for your lives but it is not enough.";
-
+                    //Play zombie sound
+                    zombieSoundPlayer.Play();
                     //Commented out to make it all appear at once
                     //StoryTextBox.Text = "All of you find a good spot in a warehouse to hide for the time being.";
                     //StoryTextBox.Text = "Something in the warehouse makes a loud crashing noise though and alerts the horde.";

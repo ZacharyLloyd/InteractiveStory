@@ -92,5 +92,17 @@
   <ItemGroup>
     <None Include="Resources\ZombieFight.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cloth-inventory.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\leather_inventory.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Enraged_Zombies-Mike_Koenig-541225828.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Killer Movie Scene-SoundBible.com-208071934.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
