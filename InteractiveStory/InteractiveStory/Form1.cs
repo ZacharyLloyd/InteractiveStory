@@ -11,7 +11,7 @@ using System.Media;
 
 namespace InteractiveStory
 {
-    public partial class Form1 : Form
+    public partial class FormMain : Form
     {
         //Variable will be used for choices being made from the drop down
         int newChoice;
@@ -29,11 +29,12 @@ namespace InteractiveStory
         SoundPlayer inventoryCloseSoundPlayer = new SoundPlayer(Properties.Resources.cloth_inventory);
         //Create an object for playing zombie sounds
         SoundPlayer zombieSoundPlayer = new SoundPlayer(Properties.Resources.Enraged_Zombies);
-        public Form1()
+        public FormMain()
         {
             InitializeComponent();
             //Play intro sound
             introSoundPlayer.Play();
+            ContinueStoryButton.Enabled = false;
         }
         //Method is used to take in the players name and start the story
         private void EnterInput_Click(object sender, EventArgs e)
@@ -70,13 +71,9 @@ namespace InteractiveStory
             //Change the background image to SupplyRun which is in the resource folder
             this.BackgroundImage = Properties.Resources.SupplyRun;
             //Display the player the story using their name they have entered
-            StoryTextBox.Text = name + " has been choosen to go on a supply run. There is a store not to far from camp that should still have supplies." + name + " will be going with Tom and Suzie. All of you may take whatever you need to survive the supply run.Good luck and God speed. You will have to make a decision once you arrive at the store.";
-            
-            //Commented out to make it all appear at once
-            //StoryTextBox.Text = "There is a store not to far from camp that should still have supplies.";
-            //StoryTextBox.Text = name + "will be going with Tom and Suzie.";
-            //StoryTextBox.Text = "All of you may take whatever you need to survive the supply run.";
-            //StoryTextBox.Text = "Good luck and God speed. You will have to make a decision once you arrive at the store.";
+            StoryTextBox.Text = name + " has been choosen to go on a supply run. There is a store not to far from camp that should still have supplies. " + 
+                name + " will be going with Tom and Suzie. All of you may take whatever you need to survive the supply run.Good luck and God speed. " +
+                "You will have to make a decision once you arrive at the store.";
             
             //Tell the player they have arrived at the store
             MessageBox.Show("You have arrived at the store. Use the options drop down to continue");
@@ -86,7 +83,7 @@ namespace InteractiveStory
             inventory.Add("Canned Beef");
             inventory.Add("Rubbing Alcohol");
             inventory.Add("Tylenol");
-            inventory.Add("Canned Peas");
+            inventory.Add("AR-15");
             inventory.Add("First Aid Kit");
             //Let the player know items have been added to their inventory
             MessageBox.Show("You have items that have been added to your inventory");
@@ -134,49 +131,41 @@ namespace InteractiveStory
                 //If the player has picked the first item in the drop down this is their story
                 case 1:
                     //Display story
-                    StoryTextBox.Text = "You have decided to fight the horde. You all take apportiate positions to fend off the horde. You are able to fend them off for a short time but all of you run out of bullets. There is nothing left for you guys to do except to accept fate.";
+                    StoryTextBox.Text = "You have decided to fight the horde. You all take apportiate positions to fend off the horde. " +
+                        "You are able to fend them off for a short time but all of you run out of bullets. " +
+                        "There is nothing left for you guys to do except to accept fate.";
                     //Play zombie sound
                     zombieSoundPlayer.Play();
-                    //Commented out to make it all appear at once
-                    //StoryTextBox.Text = "You all take apportiate positions to fend off the horde.";
-                    //StoryTextBox.Text = "You are able to fend them off for a short time but all of you run out of bullets.";
-                    //StoryTextBox.Text = "There is nothing left for you guys to do except to accept fate.";
-                    
+                    //Call the LoseHealth method to let the player know they have died
+                    LoseHealth(health);
                     //Thank the player for playing and that they can now exit
                     MessageBox.Show("Thank you for playing the simulation is now over you may exit the application now");
                     break;
                 //If the player has picked the second item in the drop down this is their story
                 case 2:
                     //Display Story
-                    StoryTextBox.Text = "You have decided to run from the horde. You make it down the street and think all of you are getting away. You turn a street corner and realize you are surrounded though and have no where to go. You try fighting at this point but are overwhelmed.";
+                    StoryTextBox.Text = "You have decided to run from the horde. You make it down the street and think all of you are getting away. " +
+                        "You turn a street corner and realize you are surrounded though and have no where to go. " +
+                        "You try fighting at this point but are overwhelmed. "+
+                        "Please press continue story to keep going.";
                     //Play zombie sound
                     zombieSoundPlayer.Play();
-                    //Commented out to make it all appear at once
-                    //StoryTextBox.Text = "You make it down the street and think all of you are getting away.";
-                    //StoryTextBox.Text = "You turn a street corner and realize you are surrounded though and have no where to go.";
-                    //StoryTextBox.Text = "You try fighting at this point but are overwhelmed.";
-
-                    //Thank the player for playing and that they can now exit
-                    MessageBox.Show("Thank you for playing the simulation is now over you may exit the application now");
+                    //Enable button to continue story
+                    ContinueStoryButton.Enabled = true;
                     break;
                 //If the player has picked the third item in the drop down this is their story
                 case 3:
                     //Display story
-                    StoryTextBox.Text = "You have decided to hide from the horde. All of you find a good spot in a warehouse to hide for the time being. Something in the warehouse makes a loud crashing noise though and alerts the horde. You are now trapped in a warehouse with the horde closing in. You all try to fight for your lives but it is not enough.";
-                    //Play zombie sound
-                    zombieSoundPlayer.Play();
-                    //Commented out to make it all appear at once
-                    //StoryTextBox.Text = "All of you find a good spot in a warehouse to hide for the time being.";
-                    //StoryTextBox.Text = "Something in the warehouse makes a loud crashing noise though and alerts the horde.";
-                    //StoryTextBox.Text = "You are now trapped in a warehouse with the horde closing in.";
-                    //StoryTextBox.Text = "You all try to fight for your lives but it is not enough.";
-
-                    //Thank the player for playing and that they can now exit
-                    MessageBox.Show("Thank you for playing the simulation is now over you may exit the application now");
+                    StoryTextBox.Text = "You have decided to hide from the horde. " +
+                        "All of you find a good spot in a warehouse to hide for the time being. " +
+                        "Something in the warehouse makes a loud crashing noise though and alerts the horde. " +
+                        "You are now trapped in a warehouse with the horde closing in. " +
+                        "You all try to fight for your lives but it is not enough. " +
+                        "Please press continue story to keep going.";
+                    //Enable button to continue story
+                    ContinueStoryButton.Enabled = true;
                     break;
             }
-            //Call the LoseHealth method to let the player know they have died
-            LoseHealth(health);
         }
         //Display the items the player has in the inventory when the button is clicked
         private void DisplayInventory_Click(object sender, EventArgs e)
@@ -187,6 +176,16 @@ namespace InteractiveStory
                 //Print out the items that are in the list
                 StoryTextBox.Text = StoryTextBox.Text + "\n This item has been found in your inventory : " + item + ".";
             }
+        }
+        //Continue story button to open new form
+        private void ContinueStoryButton_Click(object sender, EventArgs e)
+        {
+            //Hide form
+            this.Hide();
+            //create object for new form
+            Form2 openForm = new Form2();
+            //open new form
+            openForm.Show();
         }
     }
 }

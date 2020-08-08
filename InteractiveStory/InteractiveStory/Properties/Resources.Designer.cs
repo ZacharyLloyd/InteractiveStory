@@ -63,6 +63,15 @@ namespace InteractiveStory.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
+        internal static System.IO.UnmanagedMemoryStream AR_15_Gunfire {
+            get {
+                return ResourceManager.GetStream("AR_15_Gunfire", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
         internal static System.IO.UnmanagedMemoryStream cloth_inventory {
             get {
                 return ResourceManager.GetStream("cloth_inventory", resourceCulture);
@@ -129,9 +138,39 @@ namespace InteractiveStory.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ZombieCamp {
+            get {
+                object obj = ResourceManager.GetObject("ZombieCamp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ZombieCity {
+            get {
+                object obj = ResourceManager.GetObject("ZombieCity", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ZombieFight {
             get {
                 object obj = ResourceManager.GetObject("ZombieFight", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ZpmbieStoreFronts {
+            get {
+                object obj = ResourceManager.GetObject("ZpmbieStoreFronts", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -1,6 +1,6 @@
 ﻿namespace InteractiveStory
 {
-    partial class Form1
+    partial class FormMain
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.enterInput = new System.Windows.Forms.Button();
             this.StoryTextBox = new System.Windows.Forms.TextBox();
             this.InputTextBox = new System.Windows.Forms.TextBox();
@@ -37,6 +37,7 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.ComboBoxLabel = new System.Windows.Forms.Label();
             this.DisplayInventory = new System.Windows.Forms.Button();
+            this.ContinueStoryButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // enterInput
@@ -122,12 +123,23 @@
             this.DisplayInventory.UseVisualStyleBackColor = true;
             this.DisplayInventory.Click += new System.EventHandler(this.DisplayInventory_Click);
             // 
-            // Form1
+            // ContinueStoryButton
+            // 
+            this.ContinueStoryButton.Location = new System.Drawing.Point(1111, 141);
+            this.ContinueStoryButton.Name = "ContinueStoryButton";
+            this.ContinueStoryButton.Size = new System.Drawing.Size(123, 23);
+            this.ContinueStoryButton.TabIndex = 8;
+            this.ContinueStoryButton.Text = "Continue Story";
+            this.ContinueStoryButton.UseVisualStyleBackColor = true;
+            this.ContinueStoryButton.Click += new System.EventHandler(this.ContinueStoryButton_Click);
+            // 
+            // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::InteractiveStory.Properties.Resources.Welcome;
             this.ClientSize = new System.Drawing.Size(1340, 707);
+            this.Controls.Add(this.ContinueStoryButton);
             this.Controls.Add(this.DisplayInventory);
             this.Controls.Add(this.ComboBoxLabel);
             this.Controls.Add(this.comboBox1);
@@ -136,7 +148,7 @@
             this.Controls.Add(this.InputTextBox);
             this.Controls.Add(this.StoryTextBox);
             this.Controls.Add(this.enterInput);
-            this.Name = "Form1";
+            this.Name = "FormMain";
             this.Text = "InteractiveStory";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -153,6 +165,7 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label ComboBoxLabel;
         private System.Windows.Forms.Button DisplayInventory;
+        private System.Windows.Forms.Button ContinueStoryButton;
     }
 }
 
